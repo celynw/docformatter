@@ -84,6 +84,8 @@ options:
   --tab-width width     tabs in indentation are this many characters when
                         wrapping lines (default: 1)
   --blank               add blank line after description (default: False)
+  --no-summary-blank    don't add a blank line between summary and description if
+                        one didn't exist before (default: False)
   --pre-summary-newline
                         add a newline before the summary of a multi-line
                         docstring (default: False)

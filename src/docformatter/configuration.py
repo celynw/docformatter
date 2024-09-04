@@ -223,6 +223,14 @@ class Configurater:
             help="add blank line after description (default: False)",
         )
         self.parser.add_argument(
+            "--no-summary-blank",
+            dest="no_summary_blank",
+            action="store_true",
+            default=self.flargs_dct.get("no-summary-blank", "false").lower() == "true",
+            help="don't add a blank line between summary and description if "
+            "one didn't exist before (default: False)",
+        )
+        self.parser.add_argument(
             "--pre-summary-newline",
             action="store_true",
             default=self.flargs_dct.get("pre-summary-newline", "false").lower()

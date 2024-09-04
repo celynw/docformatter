@@ -457,7 +457,9 @@ class Formatter:
             if _links[0][0] == 0 and _links[0][1] == len(contents):
                 return docstring
 
-        summary, description = _strings.split_summary_and_description(contents)
+        summary, description = _strings.split_summary_and_description(
+            contents, no_summary_blank=self.args.no_summary_blank,
+        )
 
         # Leave docstrings with only field lists alone.
         if _syntax.is_some_sort_of_field_list(

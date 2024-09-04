@@ -199,7 +199,7 @@ def split_first_sentence(text):
     return sentence, delimiter + rest
 
 
-def split_summary_and_description(contents):
+def split_summary_and_description(contents, no_summary_blank=False):
     """Split docstring into summary and description.
 
     Return tuple (summary, description).
@@ -218,12 +218,13 @@ def split_summary_and_description(contents):
                 "\n".join(split_lines[index:]).rstrip(),
             )
 
-    # Break on first sentence.
-    split = split_first_sentence(contents)
-    if split[0].strip() and split[1].strip():
-        return (
-            split[0].strip(),
-            find_shortest_indentation(split[1].splitlines()[1:]) + split[1].strip(),
-        )
+    if not no_summary_blank:
+        # Break on first sentence.
+        split = split_first_sentence(contents)
+        if split[0].strip() and split[1].strip():
+            return (
+                split[0].strip(),
+                find_shortest_indentation(split[1].splitlines()[1:]) + split[1].strip(),
+            )
 
     return contents, ""
